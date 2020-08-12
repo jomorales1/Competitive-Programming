@@ -2,6 +2,16 @@
 
 using namespace std;
 
+int best(vector<int> &options, int a) {
+    for (auto x : options) {
+        if (x < a)
+            return x;
+        if (x > a)
+            return x;
+    }
+    return options[0];
+}
+
 void solve() {
     int n, m;
     cin >> n >> m;
@@ -14,15 +24,12 @@ void solve() {
     for (int i = 0; i < m; i++) {
         cin >> b[i];
     }
+    sort(b.begin(), b.end());
     for (int i = 0; i < n; i++) {
-        int m = INT_MAX;
-        for (int j = 0; j <= m; j++) {
-            m = min(m, a[i] & b[j]);
-        }
-        c[i] = a[i] & b[0];
+        c[i] = a[i] & best(b, a[i]);
     }
-    int res = c[0];
-    for (int i = 1; i < n; i++) {
+    int res = 0;
+    for (int i = 0; i < n; i++) {
         res |= c[i];
     }
     cout << res << "\n";
