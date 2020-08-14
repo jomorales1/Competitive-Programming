@@ -43,7 +43,7 @@ void solve() {
 }
 
 int main() {
-    // TODO: finish algorithm
+    // TODO: finish algorithm :D
     int t = 0;
     cin >> t;
     for (int i = 0; i < t; i++) {
