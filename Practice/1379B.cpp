@@ -2,6 +2,13 @@
 
 using namespace std;
 
+void solve2() {
+    int l, r;
+    cin >> l >> r;
+    long long m;
+    cin >> m;
+}
+
 void solve() {
     int l, r;
     long long m;
