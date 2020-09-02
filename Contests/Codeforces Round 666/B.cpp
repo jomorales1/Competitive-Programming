@@ -40,7 +40,33 @@ void solve() {
     cout << minimum << " " << power << '\n';
 }
 
+void solve2() {
+    int n; cin >> n;
+    vector<int> numbers(n);
+    long long sum = 0LL;
+    for (int i = 0; i < n; i++) {
+        cin >> numbers[i];
+        sum += numbers[i];
+    }
+    sort(numbers.begin(), numbers.end());
+    int limit = (int) 1e6;
+    long long res = LONG_LONG_MAX;
+    long long operations = 0LL;
+    for (int i = 1; i <= limit; i++) {
+        for (int j = 0; j < n; j++) {
+            operations += abs(numbers[j] - pow(i, j));
+            if (operations > res)
+                break;
+        }
+        if (operations < res) {
+            res = operations;
+        }
+        operations = 0;
+    }
+    cout << res << '\n';
+}
+
 int main() {
-    solve();
+    solve2();
     return 0;
 }
