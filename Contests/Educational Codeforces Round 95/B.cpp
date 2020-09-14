@@ -73,10 +73,37 @@ void solve() {
     cout << '\n';
 }
 
+void solve2() {
+    int n = 0; cin >> n;
+    vector<int> numbers(n);
+    for (int i = 0; i < n; i++) {
+        cin >> numbers[i];
+    }
+    vector<int> status(n);
+    vector<int> to_place;
+    for (int i = 0; i < n; i++) {
+        cin >> status[i];
+        if (status[i] == 0) {
+            to_place.push_back(numbers[i]);
+        }
+    }
+    if (to_place.size() > 0)
+        sort(to_place.begin(), to_place.end());
+    for (int i = 0; i < n; i++) {
+        if (status[i] == 1) {
+            cout << numbers[i] << ' ';
+        } else {
+            cout << to_place.back() << ' ';
+            to_place.pop_back();
+        }
+    }
+    cout << '\n';
+}
+
 int main() {
     int t = 0; cin >> t;
     for (int i = 0; i < t; i++) {
-        solve();
+        solve2();
     }
     return 0;
 }
